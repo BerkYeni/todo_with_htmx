@@ -1,0 +1,17 @@
+<li class="mb-2 p-2 bg-white rounded shadow" id="task-{{ task['id'] }}">
+    <span class="{% if task['completed'] %}line-through{% endif %}">
+        {{ task['title'] }}
+    </span>
+    <button hx-post="{{ url_for('toggle_task', id=task['id']) }}"
+            hx-target="#task-{{ task['id'] }}"
+            hx-swap="outerHTML"
+            class="ml-2 text-sm text-blue-500">
+        {% if task['completed'] %}Undo{% else %}Complete{% endif %}
+    </button>
+    <button hx-delete="{{ url_for('delete_task', id=task['id']) }}"
+            hx-target="#task-{{ task['id'] }}"
+            hx-swap="outerHTML"
+            class="ml-2 text-sm text-red-500">
+        Delete
+    </button>
+</li>

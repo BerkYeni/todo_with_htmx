@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="todo-list">
+    <form hx-post="{{ url_for('add_task') }}" hx-target="#task-list" hx-swap="innerHTML" class="mb-4">
+        <input type="text" name="title" placeholder="New task" required class="p-2 border rounded">
+        <button type="submit" class="bg-blue-500 text-white p-2 rounded">Add Task</button>
+    </form>
+    <div id="task-list">
+        {% include 'task_list.html' %}
+    </div>
+</div>
+{% endblock %}
